@@ -76,3 +76,11 @@ JOIN sales_reps
   ON accounts.sales_rep_id = sales_reps.id
 GROUP BY sales_reps.name;
 
+-- 4. Accounts with more that 5 orders
+SELECT accounts.name,
+       COUNT(*) AS num_orders
+FROM orders
+JOIN accounts 
+  ON orders.account_id = accounts.id
+GROUP BY accounts.name
+HAVING COUNT(*) > 5;
